@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/CMSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/CMSteppedProgressBar)
 
 # CMSteppedProgressBar
-Customizable switch view
+Customizable progress bar with steps
 
 CMSteppedProgressBar Properties:
 ---------------------------------------------------
