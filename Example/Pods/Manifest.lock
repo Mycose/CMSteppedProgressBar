@@ -1,0 +1,14 @@
+PODS:
+  - CMSteppedProgressBar (0.1.0)
+
+DEPENDENCIES:
+  - CMSteppedProgressBar (from `../`)
+
+EXTERNAL SOURCES:
+  CMSteppedProgressBar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CMSteppedProgressBar: 2f533cdc33ab7007d93fb892ca532740423d5653
+
+COCOAPODS: 0.35.0

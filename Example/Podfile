@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'CMSteppedProgressBar', :exclusive => true do
+  pod "CMSteppedProgressBar", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "CMSteppedProgressBar", :path => "../"
+
+  
+end
