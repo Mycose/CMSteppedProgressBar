@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CMSteppedProgressBar: 2f533cdc33ab7007d93fb892ca532740423d5653
+  CMSteppedProgressBar: 964eeead4f97d85bcf3ac9a27507b2fda13e01ab
 
 COCOAPODS: 0.35.0
