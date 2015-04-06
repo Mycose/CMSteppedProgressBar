@@ -5,11 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/CMSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/CMSteppedProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/CMSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/CMSteppedProgressBar)
 
-# CMSteppedProgressBar
+## CMSteppedProgressBar
 Customizable progress bar with steps
 
-CMSteppedProgressBar Properties:
----------------------------------------------------
+## CMSteppedProgressBar Properties:
 ```objc
 /// set nbSteps in last because it will create all views, so if you want a custom design customize before setting the number of steps
 @property (nonatomic) NSUInteger nbSteps;
@@ -29,15 +28,13 @@ CMSteppedProgressBar Properties:
 @property (nonatomic, strong) UIColor* tintColor;
 ```
 
-CMSteppedProgressBar Delegation : CMSteppedProgressBarDelegate
----------------------------------------------------
+## CMSteppedProgressBar Delegation : CMSteppedProgressBarDelegate
 Called when the user click on an activated step dot, send you the sender and the step clicked
 ```objc
 - (IBAction)steppedClicked:(id)sender stepNb:(NSUInteger)step;
 ```
 
-CMSteppedProgressBar Usage Example:
----------------------------------------------------
+## CMSteppedProgressBar Usage Example:
 ```objc
 self.steppedBar1 = [[CMSteppedProgressBar alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 60)];
     self.steppedBar1.animDuration = 0.1;
@@ -66,14 +63,7 @@ self.steppedBar1 = [[CMSteppedProgressBar alloc] initWithFrame:CGRectMake(0, 100
 ```
 ![Gif](./Screenshots/steppedBarDemo.gif)
 
-Installation
----------------------------------------------------
-```objc
-pod 'CMSteppedProgressBar'
-```
-
 ## Installation
----------------------------------------------------
 CMSteppedProgressBar is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -82,9 +72,7 @@ pod "CMSteppedProgressBar"
 ```
 
 ## Author
----------------------------------------------------
 Mycose, morissard@gmail.com
 
 ## License
----------------------------------------------------
 CMSteppedProgressBar is available under the MIT license. See the LICENSE file for more info.
