@@ -8,26 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
+@class CMSteppedProgressBar;
 @protocol CMSteppedProgressBarDelegate <NSObject>
-- (IBAction)steppedClicked:(id)sender stepNb:(NSUInteger)step;
+- (void)steppedBar:(CMSteppedProgressBar *)steppedBar didSelectIndex:(NSUInteger)index;
 @end
 
 @interface CMSteppedProgressBar : UIView
 
 /// set nbSteps in last because it will create all views, so if you want a custom design customize before setting the number of steps
 @property (nonatomic) NSUInteger nbSteps;
+
 /// set manually the currentStep or use stepNext/stepPrev
 @property (nonatomic) NSUInteger currentStep;
+
 /// change the line height between the dots, default is 5
 @property (nonatomic) CGFloat linesHeight;
+
 /// change the width of the dots, default is 20
 @property (nonatomic) CGFloat dotsWidth;
+
 /// anim duration, default is 0.6f
 @property (nonatomic) NSTimeInterval animDuration;
+
 /// anim type, default is curve ease in
 @property (nonatomic) UIViewAnimationOptions animOption;
+
 /// change the color of the bar when not filled, gray by default
 @property (nonatomic, strong) UIColor* barColor;
+
 /// change the color of the bar when it's filled, white by default
 @property (nonatomic, strong) UIColor* tintColor;
 

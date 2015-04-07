@@ -132,10 +132,12 @@
         [self setCurrentStep:self.currentStep-1];
 }
 
-- (void)stepBtnClicked:(id)sender {
-    UIButton* btn = (UIButton*)sender;
-    if (btn.tag < self.currentStep)
-        [self.delegate steppedClicked:self stepNb:btn.tag];
+- (void)stepBtnClicked:(id)sender
+{
+    if ([sender tag] < self.currentStep){
+        [self.delegate steppedBar:self didSelectIndex:[sender tag]];
+        return;
+    }
 }
 
 - (void) prepareViews {

@@ -8,7 +8,7 @@
 #import <CMSteppedProgressBar.h>
 #import "CMSteppedProgressBarViewController.h"
 
-@interface CMSteppedProgressBarViewController ()
+@interface CMSteppedProgressBarViewController () <CMSteppedProgressBarDelegate>
 @property (nonatomic, strong) CMSteppedProgressBar* steppedBar1;
 @property (nonatomic, strong) CMSteppedProgressBar* steppedBar2;
 @property (nonatomic, strong) CMSteppedProgressBar* steppedBar3;
@@ -30,6 +30,7 @@
     self.steppedBar1.linesHeight = 10.f;
     self.steppedBar1.dotsWidth = 30.f;
     self.steppedBar1.nbSteps = 8;
+    self.steppedBar1.delegate = self;
     [self.view addSubview:self.steppedBar1];
     
     self.steppedBar2 = [[CMSteppedProgressBar alloc] initWithFrame:CGRectMake(50, self.steppedBar1.frame.origin.y + 100, self.view.frame.size.width-100, 40)];
@@ -38,6 +39,7 @@
     self.steppedBar2.tintColor = [UIColor redColor];
     self.steppedBar2.nbSteps = 6;
     self.steppedBar2.animOption = UIViewAnimationOptionCurveEaseIn;
+    self.steppedBar2.delegate = self;
     [self.view addSubview:self.steppedBar2];
     
     self.steppedBar3 = [[CMSteppedProgressBar alloc] initWithFrame:CGRectMake(0, self.steppedBar2.frame.origin.y + 100, self.view.frame.size.width, 30)];
@@ -46,6 +48,7 @@
     self.steppedBar3.linesHeight = 2.f;
     self.steppedBar3.dotsWidth = 10.f;
     self.steppedBar3.nbSteps = 5;
+    self.steppedBar3.delegate = self;
     [self.view addSubview:self.steppedBar3];
     
     self.btnTest = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2- 50, self.steppedBar3.frame.origin.y + self.steppedBar3.frame.size.height+20, 100, 40)];
@@ -64,10 +67,9 @@
     [self.steppedBar3 nextStep];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)steppedBar:(CMSteppedProgressBar *)steppedBar didSelectIndex:(NSUInteger)index
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"%s didSelectIndex %ld",__PRETTY_FUNCTION__,index);
 }
 
 @end
