@@ -145,6 +145,7 @@
     CGFloat padding = (self.frame.size.width-(self.numberOfSteps*self.dotsWidth))/(self.numberOfSteps+1);
     for (int i = 0; i < self.numberOfSteps; i++) {
         UIView *round = [[UIView alloc] initWithFrame:CGRectMake((i*self.dotsWidth)+((i+1)*padding), self.frame.size.height/2-self.dotsWidth/2, self.dotsWidth, self.dotsWidth)];
+        round.tag = i;
         round.layer.cornerRadius = self.dotsWidth/2;
         if (i == 0)
             round.backgroundColor = self.tintColor;
@@ -155,10 +156,10 @@
         filledround.backgroundColor = self.tintColor;
         filledround.layer.cornerRadius = self.dotsWidth/2;
         filledround.layer.masksToBounds = NO;
-        filledround.tag = i;
+        filledround.userInteractionEnabled = NO;
         
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stepBtnClicked:)];
-        [filledround addGestureRecognizer:recognizer];
+        [round addGestureRecognizer:recognizer];
         
         [afilledViews addObject:filledround];
         [aviews addObject:round];
