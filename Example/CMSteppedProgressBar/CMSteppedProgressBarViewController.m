@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.steppedBar1 = [[CMSteppedProgressBar alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 60)];
@@ -29,7 +29,7 @@
     self.steppedBar1.tintColor = [UIColor blueColor];
     self.steppedBar1.linesHeight = 10.f;
     self.steppedBar1.dotsWidth = 30.f;
-    self.steppedBar1.nbSteps = 8;
+    self.steppedBar1.numberOfSteps = 8;
     self.steppedBar1.delegate = self;
     [self.view addSubview:self.steppedBar1];
     
@@ -37,7 +37,7 @@
     self.steppedBar2.animDuration = 1.f;
     self.steppedBar2.barColor = [UIColor lightGrayColor];
     self.steppedBar2.tintColor = [UIColor redColor];
-    self.steppedBar2.nbSteps = 6;
+    self.steppedBar2.numberOfSteps = 6;
     self.steppedBar2.animOption = UIViewAnimationOptionCurveEaseIn;
     self.steppedBar2.delegate = self;
     [self.view addSubview:self.steppedBar2];
@@ -47,7 +47,7 @@
     self.steppedBar3.tintColor = [UIColor blueColor];
     self.steppedBar3.linesHeight = 2.f;
     self.steppedBar3.dotsWidth = 10.f;
-    self.steppedBar3.nbSteps = 5;
+    self.steppedBar3.numberOfSteps = 5;
     self.steppedBar3.delegate = self;
     [self.view addSubview:self.steppedBar3];
     

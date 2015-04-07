@@ -15,8 +15,8 @@
 
 @interface CMSteppedProgressBar : UIView
 
-/// set nbSteps in last because it will create all views, so if you want a custom design customize before setting the number of steps
-@property (nonatomic) NSUInteger nbSteps;
+/// set numberOfSteps in last because it will create all views, so if you want a custom design customize before setting the number of steps
+@property (nonatomic) NSUInteger numberOfSteps;
 
 /// set manually the currentStep or use stepNext/stepPrev
 @property (nonatomic) NSUInteger currentStep;
