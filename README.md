@@ -11,7 +11,7 @@ Customizable progress bar with steps
 ## CMSteppedProgressBar Properties:
 ```objc
 /// set nbSteps in last because it will create all views, so if you want a custom design customize before setting the number of steps
-@property (nonatomic) NSUInteger nbSteps;
+@property (nonatomic) NSUInteger numberOfSteps;
 /// set manually the currentStep or use stepNext/stepPrev
 @property (nonatomic) NSUInteger currentStep;
 /// change the line height between the dots, default is 5
@@ -31,7 +31,7 @@ Customizable progress bar with steps
 ## CMSteppedProgressBar Delegation : CMSteppedProgressBarDelegate
 Called when the user click on an activated step dot, send you the sender and the step clicked
 ```objc
-- (IBAction)steppedClicked:(id)sender stepNb:(NSUInteger)step;
+- (void)steppedBar:(CMSteppedProgressBar *)steppedBar didSelectIndex:(NSUInteger)index;
 ```
 
 ## CMSteppedProgressBar Usage Example:
