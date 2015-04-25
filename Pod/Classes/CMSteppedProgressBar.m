@@ -16,6 +16,8 @@
 
 @implementation CMSteppedProgressBar
 
+#pragma mark -  Life
+
 - (void)commonInit {
     self.animDuration = 0.6f;
     self.dotsWidth = 20.f;
@@ -43,12 +45,10 @@
     return self;
 }
 
-- (void)setNbSteps:(NSUInteger)nbSteps {
-    if (nbSteps != _nbSteps) {
-        _nbSteps = nbSteps;
-        [self prepareViews];
-        [self setCurrentStep:0];
-    }
+- (void)setNumberOfSteps:(NSUInteger)nbSteps {
+    _numberOfSteps = nbSteps;
+    [self prepareViews];
+    [self setCurrentStep:0];
 }
 
 - (void)animateViewFromIndex:(NSUInteger)index toIndex:(NSUInteger)endIndex andInterval:(CGFloat)interval {
@@ -93,7 +93,7 @@
 
 - (void)setCurrentStep:(NSUInteger)currentStep {
     if (self.isAnimated == NO) {
-        if (currentStep < self.nbSteps) {
+        if (currentStep < self.numberOfSteps) {
             if (currentStep != _currentStep) {
                 if (_currentStep < currentStep)
                 {
@@ -123,7 +123,7 @@
 }
 
 - (void)nextStep {
-    if (self.currentStep != self.nbSteps)
+    if (self.currentStep != self.numberOfSteps)
         [self setCurrentStep:self.currentStep+1];
 }
 
@@ -132,19 +132,20 @@
         [self setCurrentStep:self.currentStep-1];
 }
 
-- (void)stepBtnClicked:(id)sender {
-    UIButton* btn = (UIButton*)sender;
-    if (btn.tag < self.currentStep)
-        [self.delegate steppedClicked:self stepNb:btn.tag];
+- (void)stepBtnClicked:(id)sender
+{
+    UITapGestureRecognizer *gesture = sender;
+    [self.delegate steppedBar:self didSelectIndex:[gesture.view tag]];
 }
 
 - (void) prepareViews {
     NSMutableArray* aviews = [[NSMutableArray alloc] init];
     NSMutableArray* afilledViews = [[NSMutableArray alloc] init];
     
-    CGFloat padding = (self.frame.size.width-(self.nbSteps*self.dotsWidth))/(self.nbSteps+1);
-    for (int i = 0; i < self.nbSteps; i++) {
+    CGFloat padding = (self.frame.size.width-(self.numberOfSteps*self.dotsWidth))/(self.numberOfSteps+1);
+    for (int i = 0; i < self.numberOfSteps; i++) {
         UIView *round = [[UIView alloc] initWithFrame:CGRectMake((i*self.dotsWidth)+((i+1)*padding), self.frame.size.height/2-self.dotsWidth/2, self.dotsWidth, self.dotsWidth)];
+        round.tag = i;
         round.layer.cornerRadius = self.dotsWidth/2;
         if (i == 0)
             round.backgroundColor = self.tintColor;
@@ -155,16 +156,14 @@
         filledround.backgroundColor = self.tintColor;
         filledround.layer.cornerRadius = self.dotsWidth/2;
         filledround.layer.masksToBounds = NO;
+        filledround.userInteractionEnabled = NO;
         
-        UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(-self.dotsWidth/4, -self.dotsWidth/4, self.dotsWidth+self.dotsWidth/2, self.dotsWidth+self.dotsWidth/2)];
-        btn.tag = i;
-        [btn addTarget:self action:@selector(stepBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        btn.layer.masksToBounds = NO;
-        [filledround addSubview:btn];
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stepBtnClicked:)];
+        [round addGestureRecognizer:recognizer];
         
         [afilledViews addObject:filledround];
         [aviews addObject:round];
-        if (i < self.nbSteps-1) {
+        if (i < self.numberOfSteps-1) {
             UIView* line = [[UIView alloc] initWithFrame:CGRectMake((round.frame.origin.x+round.frame.size.width)-1, self.frame.size.height/2-self.linesHeight/2, padding+2, self.linesHeight)];
             line.backgroundColor = self.barColor;
             [self addSubview:line];
